@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    .done {
+      color: green;
+    }
+
+    .notDone {
+      color: black;
+    }
+
+  </style>
+</head>
+<body>
+  <form>
+    <p>
+      <label for="item">item</label>
+      <input type="text" name="item" id="item">
+    </p>
+    <button id="addItem">Add Item</button>
+  </form>
+  <hr>
+  <ul id="items"></ul>
+  <script>
+
+    document.getElementById('addItem').addEventListener('click', event => {
+      event.preventDefault()
+
+      let item = document.getElementById('item').value
+      let itemElem = document.createElement('li')
+      itemElem.className = 'notDone'
+      // itemElem.textContent = item
+      itemElem.innerHTML = `
+        <span>${item}</span>
+        <button class="isDone">✓</button>
+        <button class="delete">x</button>
+      `
+
+      document.getElementById('items').append(itemElem)
+      document.getElementById('item').value = ''
+    })
+
+    document.addEventListener('click', event => {
+      if (event.target.className === 'delete') {
+        event.target.parentNode.remove()
+      } else if (event.target.classList.contains('isDone')) {
+        if (event.target.parentNode.classList.contains('notDone')) {
+          event.target.parentNode.classList.remove('notDone')
+          event.target.parentNode.classList.add('done')
+        } else {
+          event.target.parentNode.classList.remove('done')
+          event.target.parentNode.classList.add('notDone')
+        }
+      }
+    })
+  </script>
+</body>
+</html>
