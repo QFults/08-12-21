@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    let dog = {
+      name: 'Beef',
+      breed: 'Chihuahua',
+      age: 2,
+      bark () {    
+        console.log(this)    
+        const sayName = () => {
+          console.log(this)
+          console.log(`My name is ${this.name}!`)
+        }
+        console.log('Woof woof!')
+        sayName()
+        // console.log(`Woof woof! My name is ${this.name}!`)
+      }
+    }
+    
+    dog.bark()
+
+  </script>
+</body>
+</html>
