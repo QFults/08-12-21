@@ -1,33 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  
+
   <script>
 
-    let dog = {
-      name: 'Beef',
-      breed: 'Chihuahua',
-      age: 2,
-      bark () {    
-        console.log(this)    
-        const sayName = () => {
-          console.log(this)
-          console.log(`My name is ${this.name}!`)
+    // let dog = {
+    //   name: 'Beef',
+    //   breed: 'Chihuahua',
+    //   age: 2,
+    //   bark () {    
+    //     console.log(this)    
+    //     const sayName = () => {
+    //       console.log(this)
+    //       console.log(`My name is ${this.name}!`)
+    //     }
+    //     console.log('Woof woof!')
+    //     sayName()
+    //     // console.log(`Woof woof! My name is ${this.name}!`)
+    //   }
+    // }
+
+    // dog.bark()
+
+    let quinton = {
+      name: 'Quinton The Wizard',
+      hp: 100,
+      strength: 50,
+      type: 'Wizard',
+      weapons: [
+        {
+          name: 'Coding Staff',
+          strength: 30,
+          integrity: 100
         }
-        console.log('Woof woof!')
-        sayName()
-        // console.log(`Woof woof! My name is ${this.name}!`)
+      ],
+      attack(opponent, weapon) {
+        if (weapon.integrity > 0) {
+          let damage = Math.floor(Math.random() * weapon.strength)
+          let weaponDamage = Math.floor(Math.random() * 10)
+          this.weapons[0].integrity -= weaponDamage
+          opponent.hp -= damage
+          if (opponent.hp <= 0) {
+            console.log(`
+            ${this.name} attacked ${opponent.name} with the ${weapon.name}!
+            The ${weapon.name} did ${damage} damage!
+            ${opponent.name} has been killed! Congrats!
+            `)
+          } else {
+            console.log(`
+            ${this.name} attacked ${opponent.name} with the ${weapon.name}!
+            The ${weapon.name} did ${damage} damage!
+            ${opponent.name} now has ${opponent.hp}hp
+            `)
+          }
+          if (this.weapons[0].integrity <= 0) {
+            console.log('Your weapon has been destroyed!')
+          }
+        }
       }
     }
-    
-    dog.bark()
 
+    let sean = {
+      name: 'Sean The Assassin',
+      hp: 100,
+      strength: 50,
+      type: 'Assassin',
+      weapons: [
+        {
+          name: 'Sharp Glasses',
+          strength: 30,
+          integrity: 100
+        }
+      ],
+      attack(opponent, weapon) {
+        if (weapon.integrity > 0) {
+          let damage = Math.floor(Math.random() * weapon.strength)
+          let weaponDamage = Math.floor(Math.random() * 10)
+          this.weapons[0].integrity -= weaponDamage
+          opponent.hp -= damage
+          if (opponent.hp <= 0) {
+            console.log(`
+            ${this.name} attacked ${opponent.name} with the ${weapon.name}!
+            The ${weapon.name} did ${damage} damage!
+            ${opponent.name} has been killed! Congrats!
+            `)
+          } else {
+            console.log(`
+            ${this.name} attacked ${opponent.name} with the ${weapon.name}!
+            The ${weapon.name} did ${damage} damage!
+            ${opponent.name} now has ${opponent.hp}hp
+            `)
+          }
+          if (this.weapons[0].integrity <= 0) {
+            console.log('Your weapon has been destroyed!')
+          }
+        }
+      }
+    }
+
+    sean.attack(quinton, sean.weapons[0])
+    quinton.attack(sean, quinton.weapons[0])
   </script>
 </body>
+
 </html>
